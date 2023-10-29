@@ -1,10 +1,53 @@
-#!/data/data/com.termux/files/usr/bin/sh
+#!/data/data/com.termux/files/usr/bin/bash
+source /data/data/com.termux/files/usr/etc/bash.bashrc
 
-# remove this line when possible
-export GIT_SSH_COMMAND='ssh -i ~/.ssh2/id_ed25519 -F ~/.ssh2/ssh_config'
+source "$HOME/log_helper.sh"
 
-sync="$HOME/git-sync"
-repo="$HOME/storage/shared/repos/Obsidian"
-(cd "$repo/General" && $sync)
-(cd "$repo/B&H" && $sync)
-(cd "$repo/Personal" && $sync)
+log_file="$HOME/sync.log"
+setup_logging $log_file
+
+skip_pause_val="--skip-pause"
+
+cmd () {
+  printf "\n\033[0;34m%s\033[0m\n" "$(basename "$PWD")"
+  $HOME/git-sync -ns
+}
+
+git_repos=()
+
+# Populate the array with Git repos
+for dir in "$OBSIDIAN_DIR_PATH"/*; do
+  if [ -d "$dir" ]; then
+    cd "$dir"
+    if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+      git_repos+=("$dir")
+    fi
+  fi
+done
+
+msg="You can try running 'setup' to see if it helps".
+
+# Exit if no Git repos are found
+if [ ${#git_repos[@]} -eq 0 ]; then
+  echo -e "${YELLOW}No Git repositories found in the Obsidian folder.\n${msg}${RESET}"
+  exit 1
+fi
+
+if [[ -n "$1" && "$1" != "$skip_pause_val" ]]; then # Sync a single repo
+  if [[ " ${git_repos[@]} " =~ " $OBSIDIAN_DIR_PATH/$1 " ]]; then
+    (cd "$OBSIDIAN_DIR_PATH/$1" && cmd)
+  else
+    echo -e "${RED}Specified directory doesn't exist or is not a Git repository.\n${msg}${RESET}"
+    exit 1
+  fi
+else  # Sync all Git repos
+  for repo in "${git_repos[@]}"; do
+    (cd "$repo" && cmd)
+  done
+fi
+
+log_cleanup $log_file
+
+if [[ -z "$1" ]]; then
+  bypass_log "echo -e '\n\033[44;97mPress enter to finish...\033[0m' && read none"
+fi

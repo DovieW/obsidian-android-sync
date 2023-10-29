@@ -1,0 +1,150 @@
+#!/data/data/com.termux/files/usr/bin/bash
+source /storage/emulated/0/repos/obsidian-android-sync/bashrc
+
+### Update scripts repo
+
+cd "$SCRIPTS_REPO_PATH"
+
+git fetch > /dev/null
+git_status=$(git status)
+
+if [[ "$git_status" == *"Your branch is behind"* ]]; then
+  if [[ "$git_status" == *"Changes not staged for commit"* || "$git_status" == *"Changes to be committed"* ]]; then
+    echo -e "${RED}There are local changes in the scripts repo which would block a git pull. Just be aware that you're missing updates. Continuing script...${RESET}"
+  else
+    if git pull > /dev/null 2>&1; then
+      echo -e "${GREEN}Updated the scripts repo!${RESET}"
+    else
+      echo -e "${RED}Failed to update the scripts repo.${RESET}"
+      exit 1
+    fi
+
+    # Check if 'setup' file in repo is different from the one in $HOME
+    if ! diff "${SCRIPTS_REPO_PATH}/setup" "$HOME/setup" > /dev/null; then
+        cmd="cp \"${SCRIPTS_REPO_PATH}/setup\" \"${HOME}/\""
+        echo -e "$cmd" | termux-clipboard-set
+        echo -e "${RED}The 'setup' file has been updated.\nRun the following command to update it (it's already in your clipboard):\n${YELLOW}${cmd}${RESET}"
+        echo -e "${RED}Exiting script.${RESET}"
+        exit 1
+    fi
+  fi
+fi
+
+### Add repos as safe dirs
+
+existing_dirs=$(git config --global --get-all safe.directory)
+
+for dir in "$OBSIDIAN_DIR_PATH"/*; do
+  if [ -d "$dir" ]; then
+    if [[ ! $existing_dirs == *"$dir"* ]]; then
+      git config --global --add safe.directory "$dir"
+    fi
+  fi
+done
+
+if [[ ! $existing_dirs == *"$SCRIPTS_REPO_PATH"* ]]; then
+  git config --global --add safe.directory "$SCRIPTS_REPO_PATH"
+fi
+
+### Make sure Termux has file permissions
+
+if touch "$STORAGE_PATH"/.termux_permission_check; then
+  rm "$STORAGE_PATH"/.termux_permission_check
+else
+  echo -e "${RED}Termux does not have file permissions.${RESET}"
+  echo -e "${BLUE}Run 'termux-setup-storage' or give the permission from Termux's permissions menu on Android.${RESET}"
+fi
+
+### Enable allow-external-apps
+
+if grep -q '^# allow-external-apps = true' $HOME/.termux/termux.properties; then
+  sed -i 's/^# allow-external-apps = true/allow-external-apps = true/' $HOME/.termux/termux.properties
+  termux-reload-settings
+fi
+
+### Install packages -- attempt
+
+# package_installed() {
+#   dpkg -l | grep -q "$1"
+# }
+
+# for pkg in git termux-api openssh; do
+#   if ! package_installed "$pkg"; then
+#     echo "Installing $pkg..."
+#     apt-get install -y "$pkg"
+#   fi
+# done
+
+### Create SSH keys
+
+if [ ! -f ~/.ssh/id_rsa ]; then
+  echo "Creating an SSH key..."
+  ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa > /dev/null
+
+  if cat ~/.ssh/id_rsa.pub | termux-clipboard-set; then
+    echo -e "${BLUE}SSH public key has been copied to your clipboard.${RESET}"
+    echo -e "${BLUE}Please paste it into your Git host's SSH keys authentication settings.${RESET}"
+  else
+    echo -e "$YELLOW"
+    cat ~/.ssh/id_rsa.pub
+    echo -e "\n$RESET"
+    echo -e "${BLUE}Copy the key above (in ${YELLOW}yellow${BLUE}) and paste it into your Git host's SSH keys authentication settings.${RESET}"
+  fi
+else
+  echo -e "$YELLOW"
+  cat ~/.ssh/id_rsa.pub
+  echo -e "\n${BLUE}Here's your SSH key (above in ${YELLOW}yellow${BLUE}) in case you want to copy it.${RESET}"
+fi
+
+### Copy and chmod scripts to $HOME
+
+DEST_DIR="$HOME"
+
+for file in "$SCRIPTS_REPO_PATH"/*; do
+  filename=$(basename -- "$file")
+  cp "$file" "$DEST_DIR/"
+  chmod +x "$DEST_DIR/$filename"
+done
+
+### Add source to bashrc
+
+BASHRC_FILE="/data/data/com.termux/files/usr/etc/bash.bashrc"
+
+declare -a LINES_TO_ADD=(
+  "source $SCRIPTS_REPO_PATH/bashrc # obsidian-sync-source-tag"
+)
+
+modify_or_add_line_with_tag() {
+  local line=$1
+  local file=$2
+  local tag=$(echo "$line" | awk -F'#' '{print $2}')
+
+  sed -i "/$tag/d" "$file"
+  echo "$line" >> "$file"
+}
+
+for line in "${LINES_TO_ADD[@]}"; do
+  modify_or_add_line_with_tag "$line" "$BASHRC_FILE"
+done
+
+### Make sure user.name and user.email is populated
+
+git_name=$(git config --global user.name)
+git_email=$(git config --global user.email)
+
+if [ -z "$git_name" ]; then
+  read -p "Enter your git user.name: " git_name
+  git config --global user.name "$git_name"
+fi
+
+ if [ -z "$git_email" ]; then
+  read -p "Enter your git user.email: " git_email
+  git config --global user.email "$git_email"
+fi
+
+### Git config
+
+git config --global core.editor nano
+git config --global merge.conflictstyle diff3
+
+echo -e "\n${GREEN}Setup complete"'!'

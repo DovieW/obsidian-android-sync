@@ -1,7 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/bash
-git add -A
-git commit -m "Pixel 7: $(date +'%Y-%m-%d %H:%M:%S')"
-#
+
 # git-sync
 #
 # synchronize tracking repositories
