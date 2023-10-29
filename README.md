@@ -1,6 +1,8 @@
 # Obsidian Android Sync
 
-Sync using Git + Termux over SSH, with automation and shortcuts using Tasker.
+Sync using Git (SSH) + Termux, with automation and shortcuts using Tasker. [Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete.
+
+You can follow along with [this video](https://bit.ly/45RFqXm).
 
 Note: the [Obsidian Git plugin](https://github.com/denolehov/obsidian-git) should work on mobile when using HTTP to connect to the remote. See [here](https://github.com/denolehov/obsidian-git/blob/master/README.md#mobile).
 
