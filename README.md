@@ -53,7 +53,7 @@ At this point, you can run `sync` to sync all the Obsidian vaults in the `/stora
 
 3. Import the "Tasker project" into Tasker. Once you import it, I recommend you rearrange the tasks based on [this image](https://raw.githubusercontent.com/DovieW/obsidian-android-sync/master/Tasks_Order.png) for simplicity (to rearrange tasks, hold on a task, then drag). You can import the project in 2 ways. You can use this [TaskerNet link](https://taskernet.com/shares/?user=AS35m8n3cQwLQVpqM%2Fik6LZsANJ%2F8SkOXbatTM3JXxEQY4KYaxES06TbTgTRcO7ziHKZXfzQKT1B&id=Project%3AObsidian+Syncing), or you can import the .xml file from this repository. You can do that by opening Tasker, and holding down on a project. A menu will appear, click "Import Project". Now you have to find the .xml file. Click "up" a couple times until you can find the "repos" folder. In that folder is the obsidian-android-sync folder. And the .xml file should be there.
 
-4. There are 3 tasks you have to edit in the project.
+4. There are 3 types of tasks you have to edit in the project.
     1. Vault launch icons - Create widgets to these tasks so you can jump to a specific vault without having to open the app.
     2. Vault sync tasks - Each vault needs it's own sync task. This is to allow multiple vaults to sync in parralel.
     3. Sync on app exit controller - When you leave the app, this will sync the vault you just left.
