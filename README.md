@@ -41,6 +41,8 @@ conflict-files-obsidian-git.md
 
 10. Run `cd /storage/emulated/0/repos/Obsidian` and then clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an &, ! etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. The name of the repository is not important, you can change it to anything and it will work fine. I don't know how spaces will behave.
 
+11. Run `setup`.
+
 At this point, you can run `sync` to sync all the Obsidian vaults in the `/storage/emulated/0/repos/Obsidian` folder.
 
 ---
