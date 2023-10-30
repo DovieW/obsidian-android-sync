@@ -2,7 +2,7 @@
 	<Profile sr="prof239" ve="2">
 		<cdate>1695544597937</cdate>
 		<clp>true</clp>
-		<edate>1698409911010</edate>
+		<edate>1698637390060</edate>
 		<flags>8</flags>
 		<id>239</id>
 		<mid0>416</mid0>
@@ -14,11 +14,10 @@
 	</Profile>
 	<Profile sr="prof241" ve="2">
 		<cdate>1696285424089</cdate>
-		<clp>true</clp>
-		<edate>1698411596520</edate>
+		<edate>1698668909435</edate>
 		<flags>8</flags>
 		<id>241</id>
-		<mid1>367</mid1>
+		<mid1>242</mid1>
 		<nme>Sync Vault on App Exit</nme>
 		<App sr="con0" ve="2">
 			<cls0>md.obsidian.MainActivity</cls0>
@@ -46,7 +45,7 @@
 		<cdate>1671671567933</cdate>
 		<name>Obsidian Syncing</name>
 		<pids>239,415,241</pids>
-		<tids>416,182,373,354,376,377,367,255,374,223,375</tids>
+		<tids>416,377,182,255,374,376,223,354,373,375,242</tids>
 		<Share sr="Share">
 			<b>false</b>
 			<d>Obsidian Syncing.
@@ -163,6 +162,48 @@ Wait For Result ✕</com.twofortyfouram.locale.intent.extra.BLURB>
 			<tint>-1</tint>
 		</Img>
 	</Task>
+	<Task sr="task242">
+		<cdate>1698276973267</cdate>
+		<edate>1698668909435</edate>
+		<id>242</id>
+		<nme>Sync On App Exit</nme>
+		<pri>100</pri>
+		<Action sr="act0" ve="7">
+			<code>137</code>
+			<Int sr="arg0" val="0"/>
+			<Str sr="arg1" ve="3"/>
+			<ConditionList sr="if">
+				<Condition sr="c0" ve="3">
+					<lhs>%CurrentVault</lhs>
+					<op>13</op>
+					<rhs></rhs>
+				</Condition>
+			</ConditionList>
+		</Action>
+		<Action sr="act1" ve="7">
+			<code>130</code>
+			<Str sr="arg0" ve="3">Sync Vault - %CurrentVault</Str>
+			<Int sr="arg1">
+				<var>%priority</var>
+			</Int>
+			<Int sr="arg10" val="1"/>
+			<Str sr="arg2" ve="3"/>
+			<Str sr="arg3" ve="3"/>
+			<Str sr="arg4" ve="3"/>
+			<Int sr="arg5" val="0"/>
+			<Int sr="arg6" val="0"/>
+			<Str sr="arg7" ve="3"/>
+			<Int sr="arg8" val="0"/>
+			<Int sr="arg9" val="0"/>
+		</Action>
+		<Action sr="act2" ve="7">
+			<code>549</code>
+			<Str sr="arg0" ve="3">%CurrentVault</Str>
+			<Int sr="arg1" val="0"/>
+			<Int sr="arg2" val="0"/>
+			<Int sr="arg3" val="0"/>
+		</Action>
+	</Task>
 	<Task sr="task255">
 		<cdate>1686660560882</cdate>
 		<edate>1698548445764</edate>
@@ -224,7 +265,7 @@ Wait For Result ✕</com.twofortyfouram.locale.intent.extra.BLURB>
 	</Task>
 	<Task sr="task354">
 		<cdate>1676265583657</cdate>
-		<edate>1698548337801</edate>
+		<edate>1698637465833</edate>
 		<id>354</id>
 		<nme>Open Vault</nme>
 		<pri>100</pri>
@@ -240,137 +281,9 @@ Wait For Result ✕</com.twofortyfouram.locale.intent.extra.BLURB>
 			<Str sr="arg3" ve="3"/>
 		</Action>
 	</Task>
-	<Task sr="task367">
-		<cdate>1698276973267</cdate>
-		<edate>1698412767423</edate>
-		<id>367</id>
-		<nme>Sync On App Exit Controller</nme>
-		<pri>100</pri>
-		<Action sr="act0" ve="7">
-			<code>547</code>
-			<Str sr="arg0" ve="3">%vault1</Str>
-			<Str sr="arg1" ve="3">Example</Str>
-			<Int sr="arg2" val="0"/>
-			<Int sr="arg3" val="0"/>
-			<Int sr="arg4" val="0"/>
-			<Int sr="arg5" val="3"/>
-			<Int sr="arg6" val="1"/>
-		</Action>
-		<Action sr="act1" ve="7">
-			<code>547</code>
-			<Str sr="arg0" ve="3">%vault2</Str>
-			<Str sr="arg1" ve="3">Example2</Str>
-			<Int sr="arg2" val="0"/>
-			<Int sr="arg3" val="0"/>
-			<Int sr="arg4" val="0"/>
-			<Int sr="arg5" val="3"/>
-			<Int sr="arg6" val="1"/>
-		</Action>
-		<Action sr="act10" ve="7">
-			<code>549</code>
-			<Str sr="arg0" ve="3">%CurrentVault</Str>
-			<Int sr="arg1" val="0"/>
-			<Int sr="arg2" val="0"/>
-			<Int sr="arg3" val="0"/>
-		</Action>
-		<Action sr="act2" ve="7">
-			<code>547</code>
-			<Str sr="arg0" ve="3">%vault3</Str>
-			<Str sr="arg1" ve="3">Example3</Str>
-			<Int sr="arg2" val="0"/>
-			<Int sr="arg3" val="0"/>
-			<Int sr="arg4" val="0"/>
-			<Int sr="arg5" val="3"/>
-			<Int sr="arg6" val="1"/>
-		</Action>
-		<Action sr="act3" ve="7">
-			<code>37</code>
-			<label>vault1</label>
-			<ConditionList sr="if">
-				<Condition sr="c0" ve="3">
-					<lhs>%CurrentVault</lhs>
-					<op>2</op>
-					<rhs>%vault1</rhs>
-				</Condition>
-			</ConditionList>
-		</Action>
-		<Action sr="act4" ve="7">
-			<code>130</code>
-			<Str sr="arg0" ve="3">Sync Vault - %vault1</Str>
-			<Int sr="arg1">
-				<var>%priority</var>
-			</Int>
-			<Int sr="arg10" val="1"/>
-			<Str sr="arg2" ve="3"/>
-			<Str sr="arg3" ve="3"/>
-			<Str sr="arg4" ve="3"/>
-			<Int sr="arg5" val="0"/>
-			<Int sr="arg6" val="0"/>
-			<Str sr="arg7" ve="3"/>
-			<Int sr="arg8" val="0"/>
-			<Int sr="arg9" val="0"/>
-		</Action>
-		<Action sr="act5" ve="7">
-			<code>43</code>
-			<label>vault2</label>
-			<ConditionList sr="if">
-				<Condition sr="c0" ve="3">
-					<lhs>%CurrentVault</lhs>
-					<op>2</op>
-					<rhs>%vault2</rhs>
-				</Condition>
-			</ConditionList>
-		</Action>
-		<Action sr="act6" ve="7">
-			<code>130</code>
-			<Str sr="arg0" ve="3">Sync Vault - %vault2</Str>
-			<Int sr="arg1">
-				<var>%priority</var>
-			</Int>
-			<Int sr="arg10" val="1"/>
-			<Str sr="arg2" ve="3"/>
-			<Str sr="arg3" ve="3"/>
-			<Str sr="arg4" ve="3"/>
-			<Int sr="arg5" val="0"/>
-			<Int sr="arg6" val="0"/>
-			<Str sr="arg7" ve="3"/>
-			<Int sr="arg8" val="0"/>
-			<Int sr="arg9" val="0"/>
-		</Action>
-		<Action sr="act7" ve="7">
-			<code>43</code>
-			<label>vault3</label>
-			<ConditionList sr="if">
-				<Condition sr="c0" ve="3">
-					<lhs>%CurrentVault</lhs>
-					<op>2</op>
-					<rhs>%vault3</rhs>
-				</Condition>
-			</ConditionList>
-		</Action>
-		<Action sr="act8" ve="7">
-			<code>130</code>
-			<Str sr="arg0" ve="3">Sync Vault - %vault3</Str>
-			<Int sr="arg1">
-				<var>%priority</var>
-			</Int>
-			<Int sr="arg10" val="1"/>
-			<Str sr="arg2" ve="3"/>
-			<Str sr="arg3" ve="3"/>
-			<Str sr="arg4" ve="3"/>
-			<Int sr="arg5" val="0"/>
-			<Int sr="arg6" val="0"/>
-			<Str sr="arg7" ve="3"/>
-			<Int sr="arg8" val="0"/>
-			<Int sr="arg9" val="0"/>
-		</Action>
-		<Action sr="act9" ve="7">
-			<code>38</code>
-		</Action>
-	</Task>
 	<Task sr="task373">
 		<cdate>1671671269252</cdate>
-		<edate>1698412230767</edate>
+		<edate>1698637912810</edate>
 		<id>373</id>
 		<nme>Example</nme>
 		<pri>7</pri>
@@ -378,7 +291,7 @@ Wait For Result ✕</com.twofortyfouram.locale.intent.extra.BLURB>
 			<code>547</code>
 			<label>⚠️ SET ME!</label>
 			<Str sr="arg0" ve="3">%vault</Str>
-			<Str sr="arg1" ve="3">General</Str>
+			<Str sr="arg1" ve="3">Example1</Str>
 			<Int sr="arg2" val="0"/>
 			<Int sr="arg3" val="0"/>
 			<Int sr="arg4" val="0"/>
@@ -570,7 +483,7 @@ Wait For Result ✕</com.twofortyfouram.locale.intent.extra.BLURB>
 	</Task>
 	<Task sr="task377">
 		<cdate>1698411281194</cdate>
-		<edate>1698411316096</edate>
+		<edate>1698637313295</edate>
 		<id>377</id>
 		<nme>☝️ Edit the above tasks</nme>
 		<pri>100</pri>
@@ -596,7 +509,7 @@ Wait For Result ✕</com.twofortyfouram.locale.intent.extra.BLURB>
 	</Task>
 	<Task sr="task416">
 		<cdate>1686660560882</cdate>
-		<edate>1698409911010</edate>
+		<edate>1698637390060</edate>
 		<id>416</id>
 		<nme>Sync Vaults Quiet</nme>
 		<pri>100</pri>

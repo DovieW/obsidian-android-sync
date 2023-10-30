@@ -53,18 +53,18 @@ At this point, you can run `sync` to sync all the Obsidian vaults in the `/stora
 
 2. Open the Obsidian app and add your vaults from the repos/Obsidian folder. If you're using the Obsidian Git plugin, you should disable it for your Android. You can do this in the plugin settings.
 
-3. Import the "Tasker project" into Tasker. Once you import it, I recommend you rearrange the tasks based on [this image](https://raw.githubusercontent.com/DovieW/obsidian-android-sync/master/Tasks_Order.png) for simplicity (to rearrange tasks, hold on a task, then drag). You can import the project in 2 ways. You can use this [TaskerNet link](https://taskernet.com/shares/?user=AS35m8n3cQwLQVpqM%2Fik6LZsANJ%2F8SkOXbatTM3JXxEQY4KYaxES06TbTgTRcO7ziHKZXfzQKT1B&id=Project%3AObsidian+Syncing), or you can import the .xml file from this repository. You can do that by opening Tasker, and holding down on a project. A menu will appear, click "Import Project". Now you have to find the .xml file. Click "up" a couple times until you can find the "repos" folder. In that folder is the obsidian-android-sync folder. And the .xml file should be there.
+3. Import the "Tasker project" into Tasker. Once you import it, I recommend you rearrange the tasks based on [this image](https://raw.githubusercontent.com/DovieW/obsidian-android-sync/master/Tasks_Order.png) for simplicity (to rearrange tasks, hold on a task, then drag). You can import the project in 2 ways. You can use this [TaskerNet link](https://bit.ly/3Mn7M4S), or you can import the .xml file from this repository. You can do that by opening Tasker, and holding down on a project. A menu will appear, click "Import Project". Now you have to find the .xml file. Click "up" a couple times until you can find the "repos" folder. In that folder is the obsidian-android-sync folder. And the .xml file should be there.
 
-4. There are 3 types of tasks you have to edit in the project.
+4. There are ~~3~~ 2 types of tasks you have to edit in the project.
     1. Vault launch icons - Create widgets to these tasks so you can jump to a specific vault without having to open the app.
     2. Vault sync tasks - Each vault needs it's own sync task. This is to allow multiple vaults to sync in parralel.
-    3. Sync on app exit controller - When you leave the app, this will sync the vault you just left.
+    3. ~~Sync on app exit controller - When you leave the app, this will sync the vault you just left.~~
 
 5. **Vault launch icons** - There are 2 example tasks (Example and Example2). Rename the task to the name of your vault (in this case, you can name it anything technically). Then in the task, you'll see a "Variable Set" action, change the value to the **name of the folder** which contains the repository for that vault.
 
 6. **Vault sync tasks** - These tasks look like this: **Sync Vault - Example**. The name must be like that. Just replace "Example" with the **name of the folder which contains the repository of your vault (case sensitive)**. There is a "Variable Set" action in these tasks as well which has to be modified as well.
 
-7. **Sync on app exit controller** - This task is a little more complex. You'll have to modify the "Variable Set" actions, and the "If" actions (if you have more than 3 vaults). The CurrentVault variable represents the last vault you opened using a "open vault" task (see step 5). Each variable (vault1, vault2 etc.), should have the name (name of the folder - case sensitive) of a vault. And each part of the "If", should take care of one vault. If you have less than 3 vaults, all you have to do is modify the "Variable Set" actions. If you have more, you'll have to add "If" actions.
+7. NOT NECESSARY ANYMORE - ~~**Sync on app exit controller** - This task is a little more complex. You'll have to modify the "Variable Set" actions, and the "If" actions (if you have more than 3 vaults). The CurrentVault variable represents the last vault you opened using a "open vault" task (see step 5). Each variable (vault1, vault2 etc.), should have the name (name of the folder - case sensitive) of a vault. And each part of the "If", should take care of one vault. If you have less than 3 vaults, all you have to do is modify the "Variable Set" actions. If you have more, you'll have to add "If" actions.~~
 
 8. Give Termux the "Display over other apps" permission.
 
