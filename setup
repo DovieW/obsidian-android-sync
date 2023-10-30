@@ -1,10 +1,25 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source /storage/emulated/0/repos/obsidian-android-sync/bashrc
 
+### Add repos as safe dirs
+
+existing_dirs=$(git config --global --get-all safe.directory)
+
+for dir in "$OBSIDIAN_DIR_PATH"/*; do
+  if [ -d "$dir" ]; then
+    if [[ ! $existing_dirs == *"$dir"* ]]; then
+      git config --global --add safe.directory "$dir"
+    fi
+  fi
+done
+
+if [[ ! $existing_dirs == *"$SCRIPTS_REPO_PATH"* ]]; then
+  git config --global --add safe.directory "$SCRIPTS_REPO_PATH"
+fi
+
 ### Update scripts repo
 
 cd "$SCRIPTS_REPO_PATH"
-
 git fetch > /dev/null
 git_status=$(git status)
 
@@ -28,22 +43,6 @@ if [[ "$git_status" == *"Your branch is behind"* ]]; then
         exit 1
     fi
   fi
-fi
-
-### Add repos as safe dirs
-
-existing_dirs=$(git config --global --get-all safe.directory)
-
-for dir in "$OBSIDIAN_DIR_PATH"/*; do
-  if [ -d "$dir" ]; then
-    if [[ ! $existing_dirs == *"$dir"* ]]; then
-      git config --global --add safe.directory "$dir"
-    fi
-  fi
-done
-
-if [[ ! $existing_dirs == *"$SCRIPTS_REPO_PATH"* ]]; then
-  git config --global --add safe.directory "$SCRIPTS_REPO_PATH"
 fi
 
 ### Make sure Termux has file permissions
@@ -78,7 +77,7 @@ fi
 ### Create SSH keys
 
 if [ ! -f ~/.ssh/id_rsa ]; then
-  echo "Creating an SSH key..."
+  echo -e "${BLUE}Creating an SSH key...${RESET}"
   ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa > /dev/null
 
   if cat ~/.ssh/id_rsa.pub | termux-clipboard-set; then
@@ -146,5 +145,9 @@ fi
 
 git config --global core.editor nano
 git config --global merge.conflictstyle diff3
+
+###
+
+cd $OBSIDIAN_DIR_PATH
 
 echo -e "\n${GREEN}Setup complete"'!'

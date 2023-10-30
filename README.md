@@ -41,7 +41,7 @@ conflict-files-obsidian-git.md
 
 9. The above command copied an SSH public key to your clipboard (or was displayed to the screen), paste this into your Git host's SSH key authentication setting (eg [Github](https://github.com/settings/keys)). If you add more vaults in the future or want to copy the SSH key again, you should run the setup script again by simply running `setup`. The long version above is not needed anymore.
 
-10. Run `cd /storage/emulated/0/repos/Obsidian` and then clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an &, ! etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. The name of the repository is not important, you can change it to anything and it will work fine. I don't know how spaces will behave.
+10. You should now be in the Obsidian directory where you should now clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an &, ! etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. I don't know how spaces will behave.
 
 11. Run `setup`.
 
