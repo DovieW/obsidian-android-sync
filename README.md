@@ -53,7 +53,7 @@ At this point, you can run `sync` to sync all the Obsidian vaults in the `/stora
 
 2. Open the Obsidian app and add your vaults from the repos/Obsidian folder. If you're using the Obsidian Git plugin, you should disable it for your Android. You can do this in the plugin settings.
 
-3. Import the "Tasker project" into Tasker. Once you import it, I recommend you rearrange the tasks based on [this image](https://raw.githubusercontent.com/DovieW/obsidian-android-sync/master/Tasks_Order.png) for simplicity (to rearrange tasks, hold on a task, then drag). You can import the project in 2 ways. You can use this [TaskerNet link](https://bit.ly/3Mn7M4S), or you can import the .xml file from this repository. You can do that by opening Tasker, and holding down on a project. A menu will appear, click "Import Project". Now you have to find the .xml file. Click "up" a couple times until you can find the "repos" folder. In that folder is the obsidian-android-sync folder. And the .xml file should be there.
+3. Import the "Tasker project" into Tasker. Once you import it, I recommend you rearrange the tasks based on [this image](https://raw.githubusercontent.com/DovieW/obsidian-android-sync/master/Tasks_Order.png) for simplicity (to rearrange tasks, hold on a task, then drag). You can import the project in 2 ways. You can use this [TaskerNet link](https://bit.ly/3Mn7M4S), or you can import the .xml file from this repository. Once it's imported, there will be some prompts, I think one for giving Tasker "Usage Access" and one to enable all profiles. Accept all.
 
 4. There are ~~3~~ 2 types of tasks you have to edit in the project.
     1. Vault launch icons - Create widgets to these tasks so you can jump to a specific vault without having to open the app.
@@ -73,11 +73,9 @@ At this point, you can run `sync` to sync all the Obsidian vaults in the `/stora
    2. Vaults Status - outputs the `git fetch && git status` of each vault
    3. Sync Log - outputs the sync log.
 
-Instead of using "vault launch icons", you can replace that with a popup menu/scene (which runs the launch icon tasks), if you find that better.
-
 If you prefer, you can have a popup menu (a scene or list dialog for example), to combine all the actions into one icon on your home screen.
 
-There is a profile which syncs all vaults at 4am.
+All vaults will sync at 4am using a Tasker profile.
 
 ---
 
