@@ -4,7 +4,7 @@ Easily sync using Git (SSH) + Termux, with automation and shortcuts using Tasker
 
 You can follow along with [this video](https://bit.ly/45RFqXm).
 
-Note: the [Obsidian Git plugin](https://github.com/denolehov/obsidian-git) works on mobile with HTTP. See [here](https://github.com/denolehov/obsidian-git/blob/master/README.md#mobile). The reason I don't use it, is because I don't typically keep the app open. Meaning, it won't automatically sync when I need it to, which is on exit.
+Note: the [Obsidian Git plugin](https://github.com/denolehov/obsidian-git) works on mobile with HTTP. See [here](https://github.com/denolehov/obsidian-git/blob/master/README.md#mobile). The reason I don't use it, is because I don't typically keep the app open. Meaning, it won't automatically sync when I need it to, which is on exit. Not to mention, authentication is significantly simpler with SSH in my experience.
 
 Using [scrcpy](https://github.com/Genymobile/scrcpy) makes this setup easier. If pasting isn't working in scrcpy, use Alt + V to force send the copied text to your Android.
 
