@@ -1,10 +1,10 @@
 # Obsidian Android Sync
 
-Sync using Git (SSH) + Termux, with automation and shortcuts using Tasker. [Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete.
+Easily sync using Git (SSH) + Termux, with automation and shortcuts using Tasker. [Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete.
 
 You can follow along with [this video](https://bit.ly/45RFqXm).
 
-Note: the [Obsidian Git plugin](https://github.com/denolehov/obsidian-git) should work on mobile when using HTTP to connect to the remote. See [here](https://github.com/denolehov/obsidian-git/blob/master/README.md#mobile).
+Note: the [Obsidian Git plugin](https://github.com/denolehov/obsidian-git) works on mobile with HTTP. See [here](https://github.com/denolehov/obsidian-git/blob/master/README.md#mobile). The reason I don't use it, is because I don't typically keep the app open. Meaning, it won't automatically sync when I need it to, which is on exit.
 
 Using [scrcpy](https://github.com/Genymobile/scrcpy) makes this setup easier. If pasting isn't working in scrcpy, use Alt + V to force send the copied text to your Android.
 
@@ -13,7 +13,6 @@ I recommend you add the following lines to your .gitignore file in all your vaul
 ```gitignore
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
-.obsidian/plugins/obsidian-git/data.json
 conflict-files-obsidian-git.md
 ```
 
