@@ -97,6 +97,8 @@ fi
 
 ### Copy and chmod scripts to $HOME
 
+pkill modd > /dev/null 2>&1
+
 DEST_DIR="$HOME"
 
 for file in "$SCRIPTS_REPO_PATH"/*; do

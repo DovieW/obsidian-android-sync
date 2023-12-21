@@ -1,6 +1,29 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source /data/data/com.termux/files/usr/etc/bash.bashrc
 
+LOCK_FILE="$HOME/sync-vaults.lock"
+
+# Function to remove lock file
+cleanup() {
+    rm -f "$LOCK_FILE"
+    exit 1
+}
+
+# Trap to catch interruptions
+trap cleanup INT TERM
+
+if [ -e "$LOCK_FILE" ]; then # check if the lock file exists
+    if [ -z "$(ps -p $(cat "$LOCK_FILE") -o pid=)" ]; then # Check if the process that created the lockfile is still running
+        echo "Removing stale lock file."
+        rm -f "$LOCK_FILE"
+    else
+        exit 1
+    fi
+fi
+
+# Store the PID in the lock file
+echo $$ > "$LOCK_FILE"
+
 source "$HOME/log_helper.sh"
 
 log_file="$HOME/sync.log"
@@ -15,7 +38,7 @@ cmd () {
 
 git_repos=()
 
-# Populate the array with Git repos
+# Populate the array with Git repos from the Obsidian folder
 for dir in "$OBSIDIAN_DIR_PATH"/*; do
   if [ -d "$dir" ]; then
     cd "$dir"
@@ -51,3 +74,7 @@ log_cleanup $log_file
 if [[ -z "$1" ]]; then
   bypass_log "echo -e '\n\033[44;97mPress enter to finish...\033[0m' && read none"
 fi
+
+rm -f "$LOCK_FILE"
+exit 0
+

@@ -1,0 +1,5 @@
+#!/data/data/com.termux/files/usr/bin/bash
+
+# Get the name of the folder which has the git repo
+git -C "$1" rev-parse --show-toplevel | xargs basename
+

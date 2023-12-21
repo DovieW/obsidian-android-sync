@@ -18,8 +18,9 @@ alias sync="$HOME/sync-vaults.sh --skip-pause"
 alias bashrc="nano /data/data/com.termux/files/usr/etc/bash.bashrc"
 alias sbashrc="source /data/data/com.termux/files/usr/etc/bash.bashrc"
 alias repos="cd $REPOS_PATH"
-alias csetup="$SCRIPTS_REPO_PATH/setup.sh $HOME/"
+alias csetup="cp $SCRIPTS_REPO_PATH/setup $HOME/"
 alias storage="cd $STORAGE_PATH"
+alias start-modd="(cd $OBSIDIAN_DIR_PATH && nohup modd > /dev/null 2>&1 &)"
 
 cd "$REPOS_PATH"
 
