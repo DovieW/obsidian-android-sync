@@ -3,7 +3,7 @@
 function setup_logging() {
   LOG_FILE=$1
   
-  echo -e "\n\033[1;33m$(date) - $0 \033[0m" >> "$LOG_FILE"
+  echo -e "\n\033[1;33m$(date) \033[0m" >> "$LOG_FILE"
   
   exec > >(tee -a "$LOG_FILE") 2>&1
 }
