@@ -1,5 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+# Fix issue where sometimes some files are staged and some aren't which causes it to not sync
+git reset HEAD
+
 # git-sync
 #
 # synchronize tracking repositories
