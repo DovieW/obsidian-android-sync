@@ -39,7 +39,11 @@ setup_logging $log_file
 
 cmd () {
   printf "\n\033[0;34m%s\033[0m\n" "$(basename "$PWD")"
-  $HOME/git-sync -ns
+  $HOME/git-sync -ns 2>&1 | tee $LAST_SYNC_PATH
+
+  if [ $? -ne 0 ]; then
+	cat $LAST_SYNC_PATH >> $NOTIFICATION_PATH # Send notifcation
+  fi
 }
 
 git_repos=()

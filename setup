@@ -148,6 +148,8 @@ git config --global merge.conflictstyle diff3
 
 ###
 
+touch $NOTIFICATION_PATH
+
 cd $OBSIDIAN_DIR_PATH
 
 echo -e "\n${GREEN}Setup complete"'!'
