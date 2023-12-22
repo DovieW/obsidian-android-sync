@@ -1,10 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source /data/data/com.termux/files/usr/etc/bash.bashrc
 
-source "$HOME/log_helper.sh"
-log_file="$HOME/sync.log"
-setup_logging $log_file
-
 LOCK_FILE="$HOME/sync-vaults.lock"
 
 # Function to remove lock file
@@ -36,6 +32,10 @@ fi
 echo $$ > "$LOCK_FILE"
 
 skip_pause_val="--skip-pause"
+
+source "$HOME/log_helper.sh"
+log_file="$HOME/sync.log"
+setup_logging $log_file
 
 cmd () {
   printf "\n\033[0;34m%s\033[0m\n" "$(basename "$PWD")"
