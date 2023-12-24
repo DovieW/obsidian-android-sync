@@ -1,5 +1,5 @@
 # Obsidian Android Sync
-Easily sync your Obsidian vaults on Android using Git (SSH) + Termux, with automation and shortcuts using Tasker. [Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete. Syncing works best when using the indivdual launch icons to open a vault, but it will also work with the normal app.
+Easily sync your Obsidian vaults on Android using Git (SSH) + Termux, with automation and shortcuts using Tasker. [Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete.
 
 I recommend you add the following lines to your .gitignore file in all your vaults that you'll be syncing using Git:
 ```gitignore
@@ -40,3 +40,4 @@ All vaults will sync at 4am every day using a Tasker profile.
 - The individual vault icons to open specific vaults can be a bit slow. I've tried different ways to open a vault. Faster ways had one of two problems. Either it would open the vault correctly, but then if you left the app, it would not appear in the recents list. Or, it would load the app, load the last vault used, then load the vault you wanted which ends up being slower then the current method. You can find almost all the methods I tried in the Open Vault task (they are disabled).
 - If you prefer, you can have a popup menu (a scene or list dialog for example), to combine all the actions or vaults into one icon on your home screen.
 - You should get a notification if a sync fails. To disable this, disable the Sync Error Notification profile.
+- Syncing works best when using the indivdual launch icons to open a vault, but it will also work with the normal app. If you open Obsidian using the normal app icon, then all vaults will sync. Which could potentially mean you'll be waiting for the vault you opened to get recent updates.
