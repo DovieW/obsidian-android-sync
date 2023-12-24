@@ -1,7 +1,5 @@
 # Obsidian Android Sync
-Easily sync using Git (SSH) + Termux, with automation and shortcuts using Tasker. [Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete. Syncing works best when using the indivdual launch icons to open a vault, but it will also work with the normal app.
-
-Using [scrcpy](https://github.com/Genymobile/scrcpy) makes setting this up easier.
+Easily sync your Obsidian vaults on Android using Git (SSH) + Termux, with automation and shortcuts using Tasker. [Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete. Syncing works best when using the indivdual launch icons to open a vault, but it will also work with the normal app.
 
 I recommend you add the following lines to your .gitignore file in all your vaults that you'll be syncing using Git:
 ```gitignore
@@ -11,7 +9,7 @@ I recommend you add the following lines to your .gitignore file in all your vaul
 /conflict-files-obsidian-git.md
 ```
 ## Setup
-1. Install [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_US&gl=US) ($10) from the Play Store.
+1. Install [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_US&gl=US) from the Play Store.
 2. Install [F-Droid](https://f-droid.org/en/).
 3. Install [Termux](https://f-droid.org/en/packages/com.termux/), [Termux:Tasker](https://f-droid.org/en/packages/com.termux.tasker/), and [Termux:API](https://f-droid.org/en/packages/com.termux.api/) apps from F-Droid (NOT from the Play Store).
 
@@ -39,6 +37,6 @@ At this point, you can run `sync` to sync all the vaults in the `/storage/emulat
 
 All vaults will sync at 4am every day using a Tasker profile.
 ## Notes
-- The individual vault icons to open specific vaults is a bit slow in my experience. I've tried different ways to open a vault. Faster ways had one of two problems. Either it would open vault but then if you left the app, it would not appear in the recents list. Or, it would load the app, load the last vault used, then, load the vault you wanted which ends up being slower then the current method. You can find almost all the methods I tried in the Open Vault task.
+- The individual vault icons to open specific vaults can be a bit slow. I've tried different ways to open a vault. Faster ways had one of two problems. Either it would open the vault correctly, but then if you left the app, it would not appear in the recents list. Or, it would load the app, load the last vault used, then load the vault you wanted which ends up being slower then the current method. You can find almost all the methods I tried in the Open Vault task (they are disabled).
 - If you prefer, you can have a popup menu (a scene or list dialog for example), to combine all the actions or vaults into one icon on your home screen.
 - You should get a notification if a sync fails. To disable this, disable the Sync Error Notification profile.
