@@ -8,7 +8,7 @@ I recommend you add the following lines to your .gitignore file in all your vaul
 .obsidian/plugins/obsidian-git/data.json
 /conflict-files-obsidian-git.md
 ```
-## Setup
+## Termux Setup
 1. Install [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_US&gl=US) from the Play Store.
 2. Install [F-Droid](https://f-droid.org/en/).
 3. Install [Termux](https://f-droid.org/en/packages/com.termux/), [Termux:Tasker](https://f-droid.org/en/packages/com.termux.tasker/), and [Termux:API](https://f-droid.org/en/packages/com.termux.api/) apps from F-Droid (NOT from the Play Store).
@@ -24,9 +24,9 @@ I recommend you add the following lines to your .gitignore file in all your vaul
 12. Run `setup` to run the setup script again.
 
 At this point, you can run `sync` to sync all the vaults in the `/storage/emulated/0/repos/Obsidian` folder.
-## Tasker
+## Tasker Setup
 1. Enable the Termux permission in the settings for the Tasker app.
-2. Open the Obsidian app and add your vaults from the repos/Obsidian folder. If you're using the Obsidian Git plugin, you should disable it for your Android. You can do this in the plugin settings.
+2. Open the Obsidian app and add your vaults from the repos/Obsidian folder. If you're using the Obsidian Git plugin, you should disable it for this device. You can do this in the plugin settings.
 3. Import the "Tasker project" into Tasker. Once you import it, I recommend you rearrange the tasks based on [this image](https://imgur.com/a/6Gj6aRjhttps://imgur.com/a/6Gj6aRj) for simplicity (to rearrange tasks, hold on a task, then drag). You can import the project in 2 ways. You can use this [TaskerNet link](https://taskernet.com/shares/?user=AS35m8n3cQwLQVpqM%2Fik6LZsANJ%2F8SkOXbatTM3JXxEQY4KYaxES06TbTgTRcO7ziHKZXfzQKT1B&id=Project%3AObsidian+Syncing), or you can import the .xml file from this repository. Once it's imported, there will be some prompts, I think one for giving Tasker "Usage Access" and one to enable all profiles. Accept all.
 4. **Vault launch icons** - There are 2 example tasks (Vault1 and Vault2). Rename the task to the name of your vault (you can name it anything). Then in the task, you'll see a "Variable Set" action, change the value to the **name of the folder** which contains the repository for that vault.
 5. Give Termux the "Display over other apps" permission.
