@@ -3,10 +3,15 @@ Easily sync your Obsidian vaults on Android using Git (SSH) + Termux, with autom
 
 I recommend you add the following lines to your .gitignore file in all your vaults that you'll be syncing using Git:
 ```gitignore
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/plugins/obsidian-git/data.json
+/.obsidian/workspace.json
+/.obsidian/workspace-mobile.json
+/.obsidian/plugins/obsidian-git/data.json
 /conflict-files-obsidian-git.md
+```
+To stop conflicts from happening, you can create a .gitattributes file in the root of the repo with the following content (I haven't tested this properly yet, I'm starting to use it now). It will basically always accept both changes (accept for the .obsidian folder).
+```gitattributes
+* merge=union
+/.obsidian/** -merge
 ```
 ## Termux Setup
 1. Install [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_US&gl=US) from the Play Store.
