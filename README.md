@@ -8,10 +8,9 @@ I recommend you add the following lines to your .gitignore file in all your vaul
 /.obsidian/plugins/obsidian-git/data.json
 /conflict-files-obsidian-git.md
 ```
-To stop conflicts from happening, you can create a .gitattributes file in the root of the repo with the following content (I haven't tested this properly yet, I'm starting to use it now). It will basically always accept both changes (except for the .obsidian folder).
+To stop conflicts from happening, you can create a .gitattributes file in the root of your vaults with the following content (I haven't tested this properly yet, I'm starting to use it now). It will basically always accept both changes for `.md` files.
 ```gitattributes
-* merge=union
-/.obsidian/** -merge
+*.md merge=union
 ```
 ## Termux Setup
 1. Install [Tasker](https://play.google.com/store/apps/details?id=net.dinglisch.android.taskerm&hl=en_US&gl=US) from the Play Store.
