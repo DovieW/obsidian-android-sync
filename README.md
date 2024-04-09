@@ -22,13 +22,13 @@ To stop conflicts from happening with your note files, you can create a .gitattr
 
    The next steps will mostly ask you to run commands in Termux.
 5. Run `termux-setup-storage` and give access to files.
-6. Run `pkg update && pkg upgrade -y && pkg install -y git openssh termux-api` to install packages.
+6. Run `pkg update && pkg upgrade -y && pkg install -y git openssh termux-api` to install packages. Press *Enter* if it pauses with a question.
 7. Run `mkdir -p /storage/emulated/0/repos/Obsidian` to create the directories used for repositories.
 8. Run `git clone https://github.com/DovieW/obsidian-android-sync.git ~/storage/shared/repos/obsidian-android-sync` to clone this repo into the repos directory.
-9. Run the setup script: `cp "/storage/emulated/0/repos/obsidian-android-sync/setup" ~/ && chmod +x "$HOME/setup" && source "$HOME/setup"`.
-10. The above command copied an SSH public key to your clipboard (or was displayed to the screen), paste this into your Git host's SSH key authentication setting (eg [Github](https://github.com/settings/keys)). If you add more vaults in the future or want to copy the SSH key again, you should run the setup script again by simply running `setup`. The long version above is not needed anymore.
-11. You should now be in the Obsidian directory where you should now clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an &, ! etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. I don't know how spaces will behave.
-12. Run `setup` to run the setup script again.
+9. Run the setup script: `cp "/storage/emulated/0/repos/obsidian-android-sync/setup" ~/ && chmod +x "$HOME/setup" && source "$HOME/setup"`. Type `yes` and hit *Enter* if prompted.
+10. The above command copied an SSH public key to your clipboard (or was displayed to the screen), paste this into your Git host's SSH key authentication setting (eg [Github](https://github.com/settings/keys)). If want to copy the SSH key again, run the setup script again by simply running `setup`. The long verison of the setup command (above) is not needed anymore.
+11. In Termux, you should now be in the Obsidian directory (verify with `pwd`) where you should now clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an &, ! etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. I don't know how spaces will behave.
+12. Whenever you add a vault to the Obsidian folder, you should run the setup script again using the `setup` command. Do so now.
 
 At this point, you can run `sync` to sync all the vaults in the `/storage/emulated/0/repos/Obsidian` folder.
 ## Tasker Setup
