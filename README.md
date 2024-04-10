@@ -22,7 +22,7 @@ To stop conflicts from happening with your note files, you can create a .gitattr
 
    The next steps will mostly ask you to run commands in Termux.
 5. Run `termux-setup-storage` and give access to files.
-6. Run `pkg update && pkg upgrade -y && pkg install -y git openssh termux-api` to install packages. Press *Enter* if it pauses with a question.
+6. Run `pkg update && pkg upgrade -y && pkg install -y git openssh termux-api` to install packages. Press *Enter* any time it pauses with a question.
 7. Run `mkdir -p /storage/emulated/0/repos/Obsidian` to create the directories used for repositories.
 8. Run `git clone https://github.com/DovieW/obsidian-android-sync.git ~/storage/shared/repos/obsidian-android-sync` to clone this repo into the repos directory.
 9. Run the setup script: `cp "/storage/emulated/0/repos/obsidian-android-sync/setup" ~/ && chmod +x "$HOME/setup" && source "$HOME/setup"`. Type `yes` and hit *Enter* if prompted.
@@ -45,6 +45,6 @@ At this point, you can run `sync` to sync all the vaults in the `/storage/emulat
 
 All vaults will sync at 4am every day using a Tasker profile.
 ## Notes
+- You should get a notification if a sync fails. This requires AutoNotification from the PlayStore. To disable this, disable the Sync Error Notification profile.
 - The individual vault icons to open specific vaults can be a bit slow. I've tried different ways to open a vault. Faster ways had one of two problems. Either it would open the vault correctly, but then if you left the app, it would not appear in the recents list. Or, it would load the app, load the last vault used, then load the vault you wanted which ends up being slower then the current method. You can find almost all the methods I tried in the Open Vault task (they are disabled).
 - If you prefer, you can have a popup menu (a scene or list dialog for example), to combine all the actions or vaults into one icon on your home screen.
-- You should get a notification if a sync fails. To disable this, disable the Sync Error Notification profile.
