@@ -1,20 +1,12 @@
 #!/data/data/com.termux/files/usr/bin/bash
 source /storage/emulated/0/repos/obsidian-android-sync/bashrc
 
-### Add repos as safe dirs
+### Turn off untrusted repo protection
 
 existing_dirs=$(git config --global --get-all safe.directory)
 
-for dir in "$OBSIDIAN_DIR_PATH"/*; do
-  if [ -d "$dir" ]; then
-    if [[ ! $existing_dirs == *"$dir"* ]]; then
-      git config --global --add safe.directory "$dir"
-    fi
-  fi
-done
-
-if [[ ! $existing_dirs == *"$SCRIPTS_REPO_PATH"* ]]; then
-  git config --global --add safe.directory "$SCRIPTS_REPO_PATH"
+if [[ ! $existing_dirs == *"*"* ]]; then
+    git config --global --add safe.directory "*"
 fi
 
 ### Update scripts repo
@@ -152,4 +144,5 @@ touch $NOTIFICATION_PATH
 
 cd $OBSIDIAN_DIR_PATH
 
-echo -e "\n${GREEN}Setup complete"'!'
+echo -e "\n${GREEN}Setup complete${RESET}\n"
+
