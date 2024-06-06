@@ -28,9 +28,8 @@ To stop conflicts from happening with your note files, you can create a .gitattr
 
    Be aware that the next step will set [safe.directory](https://git-scm.com/docs/git-config/2.35.2#Documentation/git-config.txt-safedirectory) to '*'.
 9. Run the setup script: `cp "/storage/emulated/0/repos/obsidian-android-sync/setup" ~/ && chmod +x "$HOME/setup" && source "$HOME/setup"`. Type `yes` and hit *Enter* if prompted.
-10. The above command copied an SSH public key to your clipboard (or was displayed to the screen), paste this into your Git host's SSH key authentication setting (eg [Github](https://github.com/settings/keys)). If want to copy the SSH key again, run the setup script again by simply running `setup`. The long verison of the setup command (above) is not needed anymore.
-11. In Termux, you should now be in the Obsidian directory (verify with `pwd`) where you should now clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an &, ! etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. I don't know how spaces will behave.
-12. Whenever you add a vault to the Obsidian folder, you should run the setup script again using the `setup` command. Do so now.
+10. The above command copied an SSH public key to your clipboard (or was displayed to the screen), paste this into your Git host's SSH key authentication setting (eg [Github](https://github.com/settings/keys)). If you want to copy the SSH key again, run the setup script again by simply running `setup`. The long verison of the setup command (above) is not needed anymore.
+11. In Termux, you should now be in the Obsidian directory (verify with `pwd`) where you should now clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an ampersand or exclamation point etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. I don't know how spaces will behave.
 
 At this point, you can run `sync` to sync all the vaults in the `/storage/emulated/0/repos/Obsidian` folder.
 ## Tasker Setup
@@ -50,3 +49,4 @@ All vaults will sync at 4am every day using a Tasker profile.
 - You should get a notification if a sync fails. This requires AutoNotification from the PlayStore. To disable this, disable the Sync Error Notification profile.
 - The individual vault icons to open specific vaults can be a bit slow. I've tried different ways to open a vault. Faster ways had one of two problems. Either it would open the vault correctly, but then if you left the app, it would not appear in the recents list. Or, it would load the app, load the last vault used, then load the vault you wanted which ends up being slower then the current method. You can find almost all the methods I tried in the Open Vault task (they are disabled).
 - If you prefer, you can have a popup menu (a scene or list dialog for example), to combine all the actions or vaults into one icon on your home screen.
+- If this repository has new commits that you want, running the `setup` command should pull them down. After which, you may be prompted to run a command to update the setup script itself, if it was updated.
