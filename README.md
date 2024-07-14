@@ -2,7 +2,9 @@
 Easily sync your Obsidian vaults on Android using Git (SSH) + Termux, with automation and shortcuts using Tasker.
 It works by syncing a vault when it's opened and when it's closed.
 
-[Here's an image](https://bit.ly/40hLIyt) of what it looks like, once complete with shortcuts to some optional utility functions. Each vault will have it's own icon. This allows syncing to be more efficient as without it, all vaults will sync each time in a specific order. Instead of just the vault that you open being synced immediately. If you only use one vault or don't mind the inefficiency of waiting for the vault that you just opened to be updated, then you can use the default Obsidian app icon. Also, all vaults are synced once a day (defaults to 4am).
+![Final-result](https://github.com/user-attachments/assets/86c0cdc7-f7a6-4787-8244-3872e24dcf25)
+
+Above is an image of what it looks like, once complete with shortcuts to some optional utility functions. Each vault will have it's own icon. This allows syncing to be more efficient as without it, all vaults will sync each time in a specific order. Instead of just the vault that you open being synced immediately. If you only use one vault or don't mind the inefficiency of waiting for the vault that you just opened to be updated, then you can use the default Obsidian app icon. Also, all vaults are synced once a day (defaults to 4am).
 
 To prevent conflicts, I recommend you add the following lines to your .gitignore file in all your vaults that you'll be syncing using Git. If you notice a plugin has a file which is often in conflict, you'll want to add that as well (remember to un-track it with `git rm --cached <file>`):
 ```gitignore
