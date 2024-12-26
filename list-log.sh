@@ -25,4 +25,3 @@ while true; do
         continue # Continue the loop (reload)
     fi
 done
-
