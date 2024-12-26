@@ -70,7 +70,7 @@ fi
 
 if [ ! -f ~/.ssh/id_rsa ]; then
   echo -e "${BLUE}Creating an SSH key...${RESET}"
-  ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa > /dev/null
+  ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa > /dev/null # #TODO: use better crypto?
 
   if cat ~/.ssh/id_rsa.pub | termux-clipboard-set; then
     echo -e "${BLUE}SSH public key has been copied to your clipboard.${RESET}"
@@ -145,4 +145,3 @@ touch $NOTIFICATION_PATH
 cd $OBSIDIAN_DIR_PATH
 
 echo -e "\n${GREEN}Setup complete${RESET}\n"
-
