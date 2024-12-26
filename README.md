@@ -21,16 +21,16 @@ To stop conflicts from happening with your note files, you can create a .gitattr
 3. Install [Termux](https://f-droid.org/en/packages/com.termux/), [Termux:Tasker](https://f-droid.org/en/packages/com.termux.tasker/), and [Termux:API](https://f-droid.org/en/packages/com.termux.api/) apps from F-Droid (NOT from the Play Store).
 
    The next steps will mostly ask you to run commands in Termux.
-5. Run `termux-setup-storage` and give access to files.
-6. Run `pkg update && pkg upgrade -y && pkg install -y git openssh termux-api` to install packages. Press *Enter* any time it pauses with a question.
-7. Run `mkdir -p /storage/emulated/0/repos/Obsidian` to create the directories used for repositories.
-8. Run `git clone https://github.com/DovieW/obsidian-android-sync.git ~/storage/shared/repos/obsidian-android-sync` to clone this repo into the repos directory.
+4. Run `termux-setup-storage` and give access to files.
+5. Run `pkg update && pkg upgrade -y && pkg install -y git openssh termux-api` to install packages. Press *Enter* any time it pauses with a question.
+6. Run `mkdir -p /storage/emulated/0/repos/Obsidian` to create the directories used for repositories.
+7. Run `git clone https://github.com/DovieW/obsidian-android-sync.git ~/storage/shared/repos/obsidian-android-sync` to clone this repo into the repos directory.
 
    Be aware that the next step will set [safe.directory](https://git-scm.com/docs/git-config/2.35.2#Documentation/git-config.txt-safedirectory) to '*'.
-9. Run the setup script: `cp "/storage/emulated/0/repos/obsidian-android-sync/setup" ~/ && chmod +x "$HOME/setup" && source "$HOME/setup"`. Type `yes` and hit *Enter* if prompted.
-10. The above command copied an SSH public key to your clipboard (or was displayed to the screen), paste this into your Git host's SSH key authentication setting (eg [Github](https://github.com/settings/keys)). If you want to copy the SSH key again, run the setup script again by simply running `setup`. The long verison of the setup command (above) is not needed anymore.
-11. In Termux, you should now be in the Obsidian directory (verify with `pwd`) where you should now clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an ampersand or exclamation point etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. I don't know how spaces will behave.
-12. Run the following command to apply a fix for [Git corruption issues](https://github.com/DovieW/obsidian-android-sync/issues/7): `"${HOME}/worktree-fix.sh`
+8. Run the setup script: `cp "/storage/emulated/0/repos/obsidian-android-sync/setup" ~/ && chmod +x "$HOME/setup" && source "$HOME/setup"`. Type `yes` and hit *Enter* if prompted.
+9. The above command copied an SSH public key to your clipboard (or was displayed to the screen), paste this into your Git host's SSH key authentication setting (eg [Github](https://github.com/settings/keys)). If you want to copy the SSH key again, run the setup script again by simply running `setup`. The long verison of the setup command (above) is not needed anymore.
+10. In Termux, you should now be in the Obsidian directory (verify with `pwd`) where you should now clone your Obsidian vaults. Try not to put any special characters (that are recognized by bash) in your vault name (eg an ampersand or exclamation point etc), if I remember correctly, it gave Tasker some issues, but you can probably get around that issue if you try. I don't know how spaces will behave.
+11. Run the following command to apply a fix for [Git corruption issues](https://github.com/DovieW/obsidian-android-sync/issues/7): `"${HOME}/worktree-fix.sh`
 
 At this point, you can run `sync` to sync all the vaults in the `/storage/emulated/0/repos/Obsidian` folder.
 ## Tasker Setup
