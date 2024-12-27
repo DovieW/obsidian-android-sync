@@ -34,7 +34,7 @@ At this point, you can run `sync` to sync all the vaults in the `/storage/emulat
 ## Tasker Setup
 1. Enable the Termux permission in the settings for the Tasker app.
 2. Open the Obsidian app and add your vaults from the `repos/Obsidian` folder.
-3. If you're using the Obsidian Git plugin, you should disable it for this device. You can do this in the plugin settings.
+3. If you're using the [Obsidian Git plugin](https://github.com/Vinzent03/obsidian-git), you should disable it for this device. You can do this in the plugin settings.
 4. Import the "Tasker project" into Tasker. You can import the project in 2 ways. You can use this [TaskerNet link](https://taskernet.com/shares/?user=AS35m8n3cQwLQVpqM%2Fik6LZsANJ%2F8SkOXbatTM3JXxEQY4KYaxES06TbTgTRcO7ziHKZXfzQKT1B&id=Project%3AObsidian+Syncing), or you can import ([image](https://imgur.com/a/Fvyl8HF)) the .xml file from this repository. Once it's imported, there will be some prompts, I think one for giving Tasker "Usage Access" and one to enable all profiles. Accept all.
 5. Give Termux the "Display over other apps" permission.
 6. Add the Vault launch icons as Tasker widgets (use the widget type that allows you to add them to folders) to the home screen. Also, add the 3 helper tasks as widgets (as needed): 
@@ -44,5 +44,5 @@ At this point, you can run `sync` to sync all the vaults in the `/storage/emulat
 
 All vaults will sync at 4am every day using a Tasker profile.
 ## Notes
-- You should get a notification if a sync fails. This requires AutoNotification from the PlayStore. To disable this, disable the Sync Error Notification profile.
+- You should get a notification if a sync fails. This requires AutoNotification from the PlayStore. To disable this, disable the Sync Error Notification profile. ([not working currently](https://github.com/DovieW/obsidian-android-sync/issues/3))
 - If this repository has new commits that you want, running the `setup` command should pull them down. After which, you may be prompted to run a command to update the setup script itself, if it was updated.
