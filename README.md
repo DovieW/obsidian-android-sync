@@ -2,14 +2,14 @@
 Easily sync your Obsidian vaults on Android using Git (SSH) + Termux, with automation and shortcuts using Tasker.
 It works by syncing a vault when it's opened and when it's closed.
 
-To prevent conflicts, I recommend you add the following lines to your .gitignore file in all your vaults that you'll be syncing using Git. If you notice a plugin has a file which is often in conflict, you'll want to add that as well (remember to un-track it with `git rm --cached <file>`):
+To prevent conflicts, I recommend you add the following lines to your .gitignore file in all your vaults that you'll be syncing using Git. If you notice a plugin has a file which is often in conflict, you'll want to add that as well (remember to un-track these files first with `git rm --cached <file>`):
 ```gitignore
 /.obsidian/workspace.json
 /.obsidian/workspace-mobile.json
 /.obsidian/plugins/obsidian-git/data.json
 /conflict-files-obsidian-git.md
 ```
-To stop conflicts from happening with your note files, you can create a .gitattributes file in the root of your vaults with the following content. It will basically always accept both changes for `.md` files.
+To stop conflicts from happening with your note files, you can create a `.gitattributes` file in the root of your vaults with the following content. It will basically always accept both changes for `.md` files.
 ```gitattributes
 *.md merge=union
 ```
