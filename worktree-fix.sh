@@ -39,7 +39,7 @@ for repo in "$SOURCE_PATH"/*; do
 
     git switch -c empty
     git add -A
-    git commit -m "delete" # specifically so code-server doesn't show thousands of changes in the Git tab when opening vscode at /
+    git commit --allow-empty --message "delete" # specifically so code-server doesn't show thousands of changes in the Git tab when opening vscode at /
 
     # Remove all files and directories except the .git directory
     echo -e "${YELLOW}Removing all files from the working directory of $repo_name except the .git directory...${NC}"
