@@ -113,7 +113,7 @@ log_cleanup "$log_file"
 
 # Pause if no repo was specified and skip_pause was not used
 if [[ -z "$1" ]]; then
-  bypass_log "echo -e '\n\033[44;97mPress enter to finish...\033[0m' && read none"
+  bypass_log "echo -e '\n\033[44;97mPress enter to exit...\033[0m' && read none"
 fi
 
 rm -f "$LOCK_FILE"
