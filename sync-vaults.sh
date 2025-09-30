@@ -78,6 +78,7 @@ if [[ -n "$1" && "$1" != "$skip_pause_val" ]]; then # Sync a single repo
     repo_name="$(basename "$repo")"
     tmp_log="$temp_dir/${repo_name}.log"
     (cd "$repo" && cmd "$tmp_log" > "$tmp_log" 2>&1)
+    cat "$tmp_log"
     cat "$tmp_log" >> "$log_file"
   else
     echo -e "${RED}Specified directory doesn't exist or is not a Git repository.\n${msg}${RESET}"
@@ -86,7 +87,8 @@ if [[ -n "$1" && "$1" != "$skip_pause_val" ]]; then # Sync a single repo
   fi
 else
   # Sync all Git repos in parallel
-  pids=()
+  declare -A pid_to_log
+  declare -A pid_to_repo
   for repo in "${git_repos[@]}"; do
     repo_name="$(basename "$repo")"
     tmp_log="$temp_dir/${repo_name}.log"
@@ -94,16 +96,37 @@ else
     (
       cd "$repo" && cmd "$tmp_log" > "$tmp_log" 2>&1
     ) &
-    pids+=($!)
+    pid=$!
+    pid_to_log["$pid"]="$tmp_log"
+    pid_to_repo["$pid"]="$repo_name"
   done
 
   # Wait for all background syncs to complete
-  for pid in "${pids[@]}"; do
-    wait "$pid"
-  done
+  while [ ${#pid_to_log[@]} -gt 0 ]; do
+    for pid in "${!pid_to_log[@]}"; do
+      if kill -0 "$pid" 2>/dev/null; then
+        continue
+      fi
 
-  # Append all temp logs to the main log file
-  cat "$temp_dir"/*.log >> "$log_file"
+      log_path="${pid_to_log[$pid]}"
+      repo_name="${pid_to_repo[$pid]}"
+
+      if wait "$pid"; then
+        printf "\n\033[0;32m[%s] sync finished\033[0m\n" "$repo_name"
+      else
+        printf "\n\033[0;31m[%s] sync finished with errors\033[0m\n" "$repo_name"
+      fi
+
+      cat "$log_path"
+      cat "$log_path" >> "$log_file"
+
+      unset 'pid_to_log[$pid]'
+      unset 'pid_to_repo[$pid]'
+    done
+
+    # Be gentle on the CPU while polling
+    sleep 0.2
+  done
 fi
 
 # Cleanup temp logs
